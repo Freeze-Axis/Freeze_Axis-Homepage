@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Freeze Axis 公式サイト</title>
+  <meta name="description" content="Freeze Axis">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#a9ceec">
+  <meta property="og:url" content="">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="ホームページ">
+  <meta property="og:description" content="Freeze Axis">
+  <meta property="og:site_name" content="Freeze Aixs">
+  <meta property="og:image" content="https://media.discordapp.net/attachments/1317818459425345586/1338027029341143080/GeWAKeKasAA-_6Y_-_.jpg?ex=67ac3947&is=67aae7c7&hm=f3275ce685e02b7fd247e50c91f455ff217276d39613b9e32111d17a2ce2e7f2&=&format=webp&width=620&height=670">
+  <link rel="icon" type="image/png" href="https://media.discordapp.net/attachments/1317818459425345586/1338027029341143080/GeWAKeKasAA-_6Y_-_.jpg?ex=67ac3947&is=67aae7c7&hm=f3275ce685e02b7fd247e50c91f455ff217276d39613b9e32111d17a2ce2e7f2&=&format=webp&width=620&height=670">
+  <style>
+    /* リセット */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    /* 背景色などの基本設定（元のコードそのまま） */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #6699cc;
+      color: #fff;
+      line-height: 1.6;
+    }
+    
+    /* サイドバーとコンテンツ領域のレイアウト（元のコードそのまま） */
+    .container {
+      display: flex;
+      min-height: 100vh;
+    }
+    
+    /* サイドバー（元のコードそのまま） */
+    .sidebar {
+      width: 250px;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .sidebar .logo {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    
+    .sidebar nav ul {
+      list-style: none;
+    }
+    
+    /* メニュー項目（元のコードそのまま） */
+    .sidebar nav ul li {
+      margin-bottom: 15px;
+    }
+    
+    .sidebar nav ul li a {
+      display: block;
+      text-decoration: none;
+      color: #fff;
+      padding: 10px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    
+    .sidebar nav ul li a:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+      color: #000;
+    }
+    
+    /* コンテンツ領域（元のコードそのまま） */
+    .content {
+      flex: 1;
+      padding: 40px;
+      background-color: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(5px);
+    }
+    
+    /* コンテンツ内カード（「Freeze Axisとは」など、元のコードそのまま） */
+    .card {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      margin-bottom: 30px;
+    }
+    
+    .card h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: #81d4fa;
+    }
+    
+    .card h2 {
+      font-size: 28px;
+      margin-bottom: 15px;
+      color: #81d4fa;
+    }
+    
+    .card p {
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+    
+    .section-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 20px 0 10px;
+      color: #81d4fa;
+    }
+    
+    /* iframe のスタイル（元のコードそのまま） */
+    iframe {
+      border: none;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 560px;
+      margin: 15px 0;
+    }
+    
+    /* ★ここから新規追加部分：グリッドレイアウト＋カード形式 */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* 1行に3枚のカードを表示 */
+      gap: 20px;
+    }
+    .link-card {
+      background: #1e1e1e;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-align: center;
+    }
+    .link-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.7);
+    }
+    .link-card h2 {
+      font-size: 24px;
+      margin-bottom: 15px;
+      color: #50fa7b;
+      text-shadow: 0 0 8px #50fa7b;
+    }
+    .link-card p {
+      font-size: 16px;
+      margin: 0;
+    }
+    /* ★ここまで新規追加部分 */
+    
+    /* フッター（元のコードそのまま） */
+    footer {
+      background-color: rgba(0, 0, 0, 0.8);
+      text-align: center;
+      padding: 15px;
+      color: #fff;
+    }
+    
+    footer a {
+      color: #81d4fa;
+      text-decoration: none;
+      padding: 5px 10px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    
+    footer a:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+      color: #000;
+    }
+    
+    /* スマートフォンなど画面幅が狭い場合（元のコードそのまま） */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+      
+      .sidebar {
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+      }
+      
+      .sidebar .logo {
+        margin-bottom: 0;
+      }
+      
+      .content {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- サイドバー（元のコードそのまま） -->
+    <aside class="sidebar">
+      <div class="logo">Freeze Axis</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">TOP</a></li>
+          <li><a href="about3.html">思想・方針</a></li>
+          <li><a href="about7.html">利用規約</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <!-- コンテンツ領域（元のコードそのまま） -->
+    <main class="content">
+      <div class="card">
+        <h1>Freeze Axisとは</h1>
+        <p>
+          <strong>Freeze Axis</strong>は2022年後半頃から活動するDiscordの多目的グループです。<br>
+          DiscordツールやBotの開発も行っています。
+        </p>
+        <div class="section-title">関連リンク</div>
+        <p>
+          discordサーバー：<br>
+          <a href="https://discord.gg/XR444zcxZ6" target="_blank">🔗 discord</a><br><br>
+          サーバーのリンクが無効ですか？生存状況はこちら：<br>
+          <a href="server.html" target="_blank">🔗 生存状況</a>
+        </p>
+        <iframe src="https://discord.com/widget?id=1332096912966291496&theme=dark" height="500" allowtransparency="true" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+      </div>
+      
+      <!-- ★以下、カード（枠）をグリッドレイアウトで表示 -->
+      <div class="grid">
+        <div class="link-card">
+          <a href="https://freeze-axis.github.io/Freeze_Tool/" target="_blank" style="text-decoration:none; color:inherit;">
+            <h2>Web荒らしツール</h2>
+            <p>Discordの荒らしツールです。<br>誰でも簡単に使えてかつ高機能です。</p>
+          </a>
+        </div>
+        <div class="link-card">
+          <a href="https://example.com/dm" target="_blank" style="text-decoration:none; color:inherit;">
+            <h2>DMグループ荒らしツール</h2>
+            <p>機能の紹介<br>・DMグループの作成<br>・DMグループに追加<br></p>
+          </a>
+        </div>
+        <div class="link-card">
+          <a href="https://freeze-axis.github.io/discord_report/" target="_blank" style="text-decoration:none; color:inherit;">
+            <h2>通報ツール</h2>
+            <p>詳細はクリックしてください。</p>
+          </a>
+        </div>
+      </div>
+      <!-- ★以上、グリッドレイアウト部分 -->
+    </main>
+  </div>
+  
+  <!-- フッター（元のコードそのまま） -->
+  <footer>
+    <p>
+      <a href="LICENSE.html" target="_blank">©Freeze Axis 2025</a> | 
+      <a href="https://discord.gg/XR444zcxZ6" target="_blank">Discord server</a>
+    </p>
+  </footer>
+</body>
+</html>
