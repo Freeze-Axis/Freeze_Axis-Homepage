@@ -2,13 +2,13 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>Freeze Axis 公式サイト - サイト利用規約</title>
+  <title>サイト利用規約 - Freeze Axis 公式サイト</title>
   <meta name="description" content="Freeze Axis">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#a9ceec">
   <meta property="og:url" content="">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="サイト利用規約">
+  <meta property="og:title" content="サイト利用規約 - Freeze Axis">
   <meta property="og:description" content="Freeze Axis">
   <meta property="og:site_name" content="Freeze Axis">
   <meta property="og:image" content="https://media.discordapp.net/attachments/1317818459425345586/1338027029341143080/GeWAKeKasAA-_6Y_-_.jpg">
@@ -17,119 +17,119 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary-color: #6699cc;
-      --sidebar-bg: rgba(0, 0, 0, 0.85);
-      --content-bg: rgba(0, 0, 0, 0.7);
+      --primary-color: #5a8fc0;
+      --sidebar-bg: rgba(0, 0, 0, 0.8);
+      --content-bg: rgba(0, 0, 0, 0.6);
       --card-bg: rgba(255, 255, 255, 0.1);
-      --hover-bg: rgba(255, 255, 255, 0.2);
+      --hover-bg: rgba(255, 255, 255, 0.25);
       --accent-color: #81d4fa;
       --link-color: #50fa7b;
       --text-color: #fff;
     }
-    
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    
     body {
       font-family: 'Roboto', sans-serif;
-      background-color: var(--primary-color);
+      background: linear-gradient(135deg, var(--primary-color), #4a7aa6);
       color: var(--text-color);
       line-height: 1.6;
+      min-height: 100vh;
     }
-    
     .container {
       display: flex;
       min-height: 100vh;
+      backdrop-filter: blur(2px);
     }
-    
+    /* サイドバー */
     .sidebar {
       width: 250px;
-      background-color: var(--sidebar-bg);
+      background: var(--sidebar-bg);
       padding: 20px;
       display: flex;
       flex-direction: column;
       position: relative;
+      box-shadow: 2px 0 8px rgba(0,0,0,0.5);
     }
-    
-    .sidebar .logo {
-      font-size: 28px;
-      font-weight: bold;
-      margin-bottom: 30px;
+    .logo {
+      font-size: 32px;
+      font-weight: 700;
       text-align: center;
+      margin-bottom: 30px;
       color: var(--accent-color);
+      letter-spacing: 1px;
     }
-    
     .menu-toggle {
       cursor: pointer;
-      font-size: 24px;
+      font-size: 28px;
       color: var(--text-color);
       display: none;
     }
-    
-    nav ul {
-      list-style: none;
-    }
-    
-    nav ul li {
-      margin-bottom: 15px;
-    }
-    
+    nav ul { list-style: none; }
+    nav ul li { margin-bottom: 15px; }
     nav ul li a {
       display: block;
       text-decoration: none;
       color: var(--text-color);
-      padding: 10px;
-      background-color: var(--card-bg);
-      border-radius: 5px;
-      transition: background-color 0.3s, color 0.3s;
+      padding: 12px 15px;
+      background: var(--card-bg);
+      border-radius: 8px;
+      transition: background 0.3s, color 0.3s;
     }
-    
     nav ul li a:hover {
-      background-color: var(--hover-bg);
+      background: var(--hover-bg);
       color: var(--sidebar-bg);
     }
-    
+    /* コンテンツ */
     .content {
       flex: 1;
       padding: 40px;
-      background-color: var(--content-bg);
+      background: var(--content-bg);
       backdrop-filter: blur(5px);
+      overflow-y: auto;
     }
-    
     .card {
-      background-color: var(--card-bg);
+      background: var(--card-bg);
       padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
       margin-bottom: 30px;
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: transform 0.3s;
     }
-    
-    .card h1 { font-size: 36px; margin-bottom: 20px; color: var(--accent-color); }
-    .card h2 { font-size: 28px; margin-bottom: 15px; color: var(--accent-color); }
-    .card p { margin-bottom: 20px; font-size: 18px; }
+    .card:hover { transform: scale(1.02); }
+    .card h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: var(--accent-color);
+    }
+    .card h2 {
+      font-size: 28px;
+      margin-bottom: 15px;
+      color: var(--accent-color);
+      border-bottom: 2px solid var(--accent-color);
+      padding-bottom: 5px;
+    }
+    .card p, .card li { font-size: 18px; margin-bottom: 20px; }
     .card ul { margin-left: 20px; margin-bottom: 20px; }
-    .card ul li { margin-bottom: 10px; }
-    
+    /* フッター */
     footer {
-      background-color: var(--sidebar-bg);
+      background: var(--sidebar-bg);
       text-align: center;
       padding: 15px;
       color: var(--text-color);
     }
-    
     footer a {
       color: var(--accent-color);
       text-decoration: none;
       padding: 5px 10px;
-      background-color: var(--card-bg);
+      background: var(--card-bg);
       border-radius: 5px;
-      transition: background-color 0.3s, color 0.3s;
+      transition: background 0.3s, color 0.3s;
     }
-    
     footer a:hover {
-      background-color: var(--hover-bg);
+      background: var(--hover-bg);
       color: var(--sidebar-bg);
     }
-    
+    /* レスポンシブ */
     @media (max-width: 768px) {
       .container { flex-direction: column; }
       .sidebar {
@@ -138,22 +138,17 @@
         align-items: center;
         justify-content: space-between;
       }
-      .menu-toggle {
-        display: block;
-      }
+      .menu-toggle { display: block; }
       .sidebar nav {
         display: none;
         width: 100%;
-      }
-      .sidebar nav.active {
-        display: block;
+        background: var(--sidebar-bg);
         position: absolute;
         top: 60px;
         left: 0;
-        background: var(--sidebar-bg);
-        width: 100%;
         padding: 10px 0;
       }
+      .sidebar nav.active { display: block; }
       .sidebar nav ul li {
         margin: 10px 0;
         text-align: center;
@@ -171,11 +166,12 @@
         <ul>
           <li><a href="index.html">TOP</a></li>
           <li><a href="about3.html">思想・方針</a></li>
+          <li><a href="about4.html">ツールリンク</a></li>
           <li><a href="about7.html">利用規約</a></li>
         </ul>
       </nav>
     </aside>
-    <!-- コンテンツ領域 -->
+    <!-- コンテンツ -->
     <main class="content">
       <div class="card">
         <h1>サイト利用規約</h1>
@@ -183,48 +179,33 @@
           このウェブサイト（以下、「本サイト」）はGitHub Pagesによってホスティングされています。<br>
           以下に、本サイトの利用に関する重要な規約を記載いたします。本サイトを利用することにより、ユーザーはこれらの規約に同意したものとみなされます。
         </p>
-        
         <h2>1. ホスティングとノーログデータ収集に関する声明</h2>
         <p>
           本サイトはGitHub Pagesによってホスティングされており、サイト運営者は個人情報やIPアドレスを収集していません。<br>
-          本サイトでは、ユーザーの個人情報を一切保持、保存、収集、追跡することはありません。利用者のプライバシーは最大限に尊重されています。
+          本サイトでは、ユーザーの個人情報は一切保持・保存・収集・追跡しません。利用者のプライバシーを最大限に尊重します。
         </p>
-        
         <h2>2. 責任の限定</h2>
         <ul>
-          <li>
-            本サイトが別のサービスに第三者の手によってリンクが貼られた事による弊害について、サイト管理者は一切の対応ができません。ご了承ください。
-          </li>
-          <li>
-            第三者による不正使用に関して発生したいかなる争議やトラブルについても、サイト運営者は一切の責任を負いません。
-          </li>
-          <li>
-            本サイト上のコンテンツや情報は、信頼性をもって提供されていますが、それに関する保証は一切ありません。  
-            サイト運営者は、内容の正確性、完全性、適時性について責任を負いません。
-          </li>
-          <li>
-            本サイトの利用に起因して発生したいかなる損害や損失に対しても、サイト運営者は責任を負いません。
-          </li>
+          <li>第三者によるリンクの貼付に伴う影響に対し、サイト管理者は一切の対応をいたしません。</li>
+          <li>第三者の不正使用により発生した争議やトラブルについて、サイト運営者は責任を負いません。</li>
+          <li>本サイトのコンテンツは信頼性をもって提供されていますが、その正確性・完全性・適時性について保証いたしません。</li>
+          <li>本サイト利用に起因する損害・損失について、サイト運営者は一切責任を負いません。</li>
         </ul>
-        
         <h2>3. 免責事項</h2>
         <p>
-          本サイトは「現状のまま」で提供されており、いかなる保証も行っていません。  
-          特定の目的への適合性、非侵害、商業的な完全性についての保証は明示的または暗示的に行われません。  
-          本サイトにアクセスし利用することにより、ユーザーは自己責任において行動するものとし、サイト運営者は一切の責任を負いません。
+          本サイトは「現状のまま」提供され、いかなる保証も行いません。<br>
+          特定の目的への適合性、非侵害、商業的完全性について明示的または暗示的な保証はありません。<br>
+          本サイトの利用はすべてユーザーの自己責任で行われ、サイト運営者は一切の責任を負いません。
         </p>
-        
         <h2>4. 変更について</h2>
         <p>
-          サイト運営者は、必要に応じて本利用規約を変更する権利を有します。<br>
-          変更後の利用規約は、本サイトに掲載された時点で効力を持ちます。ユーザーは定期的に規約を確認する責任があります。
+          サイト運営者は必要に応じて本利用規約を変更する権利を有します。<br>
+          変更後の利用規約は本サイト掲載時点で効力を持ち、ユーザーは定期的に確認する責任があります。
         </p>
-        
         <p>
-          これらの規約に違反した場合、ユーザーは直ちに本サイトの利用を中止しなければなりません。  
-          利用規約に関する質問がある場合は、サイト運営者にお問い合わせください。
+          これらの規約に違反した場合、ユーザーは直ちに本サイトの利用を中止してください。<br>
+          利用規約に関するご質問は、サイト運営者までお問い合わせください。
         </p>
-        
         <p><strong>最終更新日:</strong> 2025年1月8日</p>
       </div>
     </main>
