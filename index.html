@@ -10,38 +10,47 @@
   <meta property="og:type" content="article">
   <meta property="og:title" content="ホームページ">
   <meta property="og:description" content="Freeze Axis">
-  <meta property="og:site_name" content="Freeze Aixs">
-  <meta property="og:image" content="https://media.discordapp.net/attachments/1317818459425345586/1338027029341143080/GeWAKeKasAA-_6Y_-_.jpg?ex=67ac3947&is=67aae7c7&hm=f3275ce685e02b7fd247e50c91f455ff217276d39613b9e32111d17a2ce2e7f2&=&format=webp&width=620&height=670">
-  <link rel="icon" type="image/png" href="https://media.discordapp.net/attachments/1317818459425345586/1338027029341143080/GeWAKeKasAA-_6Y_-_.jpg?ex=67ac3947&is=67aae7c7&hm=f3275ce685e02b7fd247e50c91f455ff217276d39613b9e32111d17a2ce2e7f2&=&format=webp&width=620&height=670">
+  <meta property="og:site_name" content="Freeze Axis">
+  <meta property="og:image" content="https://media.discordapp.net/attachments/1317818459425345586/1338027029341143080/GeWAKeKasAA-_6Y_-_.jpg">
+  <link rel="icon" type="image/png" href="https://media.discordapp.net/attachments/1317818459425345586/1338027029341143080/GeWAKeKasAA-_6Y_-_.jpg">
+  <!-- Google Fonts: Roboto -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    /* リセット */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    /* CSS変数で色・背景などを統一 */
+    :root {
+      --primary-color: #6699cc;         /* 全体の背景色 */
+      --sidebar-bg: rgba(0, 0, 0, 0.85);  /* サイドバー背景 */
+      --content-bg: rgba(0, 0, 0, 0.7);   /* コンテンツ背景 */
+      --card-bg: rgba(255, 255, 255, 0.1);/* カード背景 */
+      --hover-bg: rgba(255, 255, 255, 0.2);/* ホバー時背景 */
+      --accent-color: #81d4fa;            /* 見出し等のアクセント */
+      --link-color: #50fa7b;              /* リンクの色 */
+      --text-color: #fff;
     }
     
-    /* 背景色などの基本設定（元のコードそのまま） */
+    /* リセット */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
     body {
-      font-family: Arial, sans-serif;
-      background-color: #6699cc;
-      color: #fff;
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--primary-color);
+      color: var(--text-color);
       line-height: 1.6;
     }
     
-    /* サイドバーとコンテンツ領域のレイアウト（元のコードそのまま） */
     .container {
       display: flex;
       min-height: 100vh;
     }
     
-    /* サイドバー（元のコードそのまま） */
+    /* サイドバー */
     .sidebar {
       width: 250px;
-      background-color: rgba(0, 0, 0, 0.8);
+      background-color: var(--sidebar-bg);
       padding: 20px;
       display: flex;
       flex-direction: column;
+      position: relative;
     }
     
     .sidebar .logo {
@@ -49,59 +58,67 @@
       font-weight: bold;
       margin-bottom: 30px;
       text-align: center;
+      color: var(--accent-color);
     }
     
-    .sidebar nav ul {
+    /* ハンバーガーメニュー（スマホ用） */
+    .menu-toggle {
+      cursor: pointer;
+      font-size: 24px;
+      color: var(--text-color);
+      display: none;
+    }
+    
+    nav ul {
       list-style: none;
     }
     
-    /* メニュー項目（元のコードそのまま） */
-    .sidebar nav ul li {
+    nav ul li {
       margin-bottom: 15px;
     }
     
-    .sidebar nav ul li a {
+    nav ul li a {
       display: block;
       text-decoration: none;
-      color: #fff;
+      color: var(--text-color);
       padding: 10px;
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: var(--card-bg);
       border-radius: 5px;
       transition: background-color 0.3s, color 0.3s;
     }
     
-    .sidebar nav ul li a:hover {
-      background-color: rgba(255, 255, 255, 0.3);
-      color: #000;
+    nav ul li a:hover {
+      background-color: var(--hover-bg);
+      color: var(--sidebar-bg);
     }
     
-    /* コンテンツ領域（元のコードそのまま） */
+    /* コンテンツ領域 */
     .content {
       flex: 1;
       padding: 40px;
-      background-color: rgba(0, 0, 0, 0.6);
+      background-color: var(--content-bg);
       backdrop-filter: blur(5px);
     }
     
-    /* コンテンツ内カード（「Freeze Axisとは」など、元のコードそのまま） */
+    /* コンテンツ内カード */
     .card {
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: var(--card-bg);
       padding: 30px;
       border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
       margin-bottom: 30px;
     }
     
     .card h1 {
       font-size: 36px;
       margin-bottom: 20px;
-      color: #81d4fa;
+      color: var(--accent-color);
     }
     
     .card h2 {
       font-size: 28px;
       margin-bottom: 15px;
-      color: #81d4fa;
+      color: var(--accent-color);
     }
     
     .card p {
@@ -113,10 +130,9 @@
       font-size: 24px;
       font-weight: bold;
       margin: 20px 0 10px;
-      color: #81d4fa;
+      color: var(--accent-color);
     }
     
-    /* iframe のスタイル（元のコードそのまま） */
     iframe {
       border: none;
       border-radius: 10px;
@@ -125,87 +141,103 @@
       margin: 15px 0;
     }
     
-    /* ★ここから新規追加部分：グリッドレイアウト＋カード形式 */
+    /* グリッドレイアウト：リンクカード */
     .grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr); /* 1行に3枚のカードを表示 */
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
     }
+    
     .link-card {
-      background: #1e1e1e;
+      background: #2e2e3d;
       border-radius: 8px;
       padding: 20px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.5);
       transition: transform 0.3s, box-shadow 0.3s;
       text-align: center;
     }
+    
     .link-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 4px 12px rgba(0,0,0,0.7);
     }
+    
     .link-card h2 {
       font-size: 24px;
       margin-bottom: 15px;
-      color: #50fa7b;
-      text-shadow: 0 0 8px #50fa7b;
+      color: var(--link-color);
+      text-shadow: 0 0 8px var(--link-color);
     }
+    
     .link-card p {
       font-size: 16px;
       margin: 0;
     }
-    /* ★ここまで新規追加部分 */
     
-    /* フッター（元のコードそのまま） */
+    /* フッター */
     footer {
-      background-color: rgba(0, 0, 0, 0.8);
+      background-color: var(--sidebar-bg);
       text-align: center;
       padding: 15px;
-      color: #fff;
+      color: var(--text-color);
     }
     
     footer a {
-      color: #81d4fa;
+      color: var(--accent-color);
       text-decoration: none;
       padding: 5px 10px;
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: var(--card-bg);
       border-radius: 5px;
       transition: background-color 0.3s, color 0.3s;
     }
     
     footer a:hover {
-      background-color: rgba(255, 255, 255, 0.3);
-      color: #000;
+      background-color: var(--hover-bg);
+      color: var(--sidebar-bg);
     }
     
-    /* スマートフォンなど画面幅が狭い場合（元のコードそのまま） */
+    /* スマートフォンなど画面幅が狭い場合 */
     @media (max-width: 768px) {
       .container {
         flex-direction: column;
       }
-      
       .sidebar {
         width: 100%;
         flex-direction: row;
         align-items: center;
-        justify-content: space-around;
+        justify-content: space-between;
       }
-      
-      .sidebar .logo {
-        margin-bottom: 0;
+      .menu-toggle {
+        display: block;
       }
-      
-      .content {
-        padding: 20px;
+      /* 初期状態では非表示。ハンバーガー押下時に表示 */
+      .sidebar nav {
+        display: none;
+        width: 100%;
+      }
+      .sidebar nav.active {
+        display: block;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background: var(--sidebar-bg);
+        width: 100%;
+        padding: 10px 0;
+      }
+      .sidebar nav ul li {
+        margin: 10px 0;
+        text-align: center;
       }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- サイドバー（元のコードそのまま） -->
+    <!-- サイドバー -->
     <aside class="sidebar">
       <div class="logo">Freeze Axis</div>
-      <nav>
+      <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+      <nav id="mobile-nav">
         <ul>
           <li><a href="index.html">TOP</a></li>
           <li><a href="about3.html">思想・方針</a></li>
@@ -213,7 +245,7 @@
         </ul>
       </nav>
     </aside>
-    <!-- コンテンツ領域（元のコードそのまま） -->
+    <!-- コンテンツ領域 -->
     <main class="content">
       <div class="card">
         <h1>Freeze Axisとは</h1>
@@ -224,14 +256,14 @@
         <div class="section-title">関連リンク</div>
         <p>
           discordサーバー：<br>
-          <a href="https://discord.gg/XR444zcxZ6" target="_blank">🔗 discord</a><br><br>
+          <a href="https://discord.gg/XR444zcxZ6" target="_blank" style="color: var(--link-color); text-decoration: none;">🔗 discord</a><br><br>
           サーバーのリンクが無効ですか？生存状況はこちら：<br>
-          <a href="server.html" target="_blank">🔗 生存状況</a>
+          <a href="server.html" target="_blank" style="color: var(--link-color); text-decoration: none;">🔗 生存状況</a>
         </p>
         <iframe src="https://discord.com/widget?id=1332096912966291496&theme=dark" height="500" allowtransparency="true" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
       </div>
       
-      <!-- ★以下、カード（枠）をグリッドレイアウトで表示 -->
+      <!-- リンクカード：グリッドレイアウト -->
       <div class="grid">
         <div class="link-card">
           <a href="https://freeze-axis.github.io/Freeze_Tool/" target="_blank" style="text-decoration:none; color:inherit;">
@@ -242,7 +274,7 @@
         <div class="link-card">
           <a href="https://example.com/dm" target="_blank" style="text-decoration:none; color:inherit;">
             <h2>DMグループ荒らしツール</h2>
-            <p>機能の紹介<br>・DMグループの作成<br>・DMグループに追加<br></p>
+            <p>機能の紹介<br>・DMグループの作成<br>・DMグループに追加</p>
           </a>
         </div>
         <div class="link-card">
@@ -252,16 +284,24 @@
           </a>
         </div>
       </div>
-      <!-- ★以上、グリッドレイアウト部分 -->
     </main>
   </div>
   
-  <!-- フッター（元のコードそのまま） -->
+  <!-- フッター -->
   <footer>
     <p>
       <a href="LICENSE.html" target="_blank">©Freeze Axis 2025</a> | 
       <a href="https://discord.gg/XR444zcxZ6" target="_blank">Discord server</a>
     </p>
   </footer>
+  
+  <!-- モバイルメニュー切替用JS -->
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+    menuToggle.addEventListener('click', () => {
+      mobileNav.classList.toggle('active');
+    });
+  </script>
 </body>
 </html>

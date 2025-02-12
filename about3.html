@@ -11,37 +11,43 @@
   <meta property="og:title" content="思想・方針 - Freeze Axis">
   <meta property="og:description" content="Freeze Axis">
   <meta property="og:site_name" content="Freeze Axis">
-  <meta property="og:image" content="https://media.discordapp.net/attachments/1317818459425345586/1338027029341143080/GeWAKeKasAA-_6Y_-_.jpg?ex=67ac3947&is=67aae7c7&hm=f3275ce685e02b7fd247e50c91f455ff217276d39613b9e32111d17a2ce2e7f2&=&format=webp&width=620&height=670">
-  <link rel="icon" type="image/png" href="https://media.discordapp.net/attachments/1317818459425345586/1338027029341143080/GeWAKeKasAA-_6Y_-_.jpg?ex=67ac3947&is=67aae7c7&hm=f3275ce685e02b7fd247e50c91f455ff217276d39613b9e32111d17a2ce2e7f2&=&format=webp&width=620&height=670">
+  <meta property="og:image" content="https://media.discordapp.net/attachments/1317818459425345586/1338027029341143080/GeWAKeKasAA-_6Y_-_.jpg">
+  <link rel="icon" type="image/png" href="https://media.discordapp.net/attachments/1317818459425345586/1338027029341143080/GeWAKeKasAA-_6Y_-_.jpg">
+  <!-- Google Fonts: Roboto -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    /* リセット */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root {
+      --primary-color: #6699cc;
+      --sidebar-bg: rgba(0, 0, 0, 0.85);
+      --content-bg: rgba(0, 0, 0, 0.7);
+      --card-bg: rgba(255, 255, 255, 0.1);
+      --hover-bg: rgba(255, 255, 255, 0.2);
+      --accent-color: #81d4fa;
+      --link-color: #50fa7b;
+      --text-color: #fff;
     }
     
-    /* 背景画像を削除し、主要な色 (#6699cc) を背景色に設定 */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
     body {
-      font-family: Arial, sans-serif;
-      background-color: #6699cc;
-      color: #fff;
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--primary-color);
+      color: var(--text-color);
       line-height: 1.6;
     }
     
-    /* サイドバーとコンテンツ領域のレイアウト */
     .container {
       display: flex;
       min-height: 100vh;
     }
     
-    /* サイドバー */
     .sidebar {
       width: 250px;
-      background-color: rgba(0, 0, 0, 0.8);
+      background-color: var(--sidebar-bg);
       padding: 20px;
       display: flex;
       flex-direction: column;
+      position: relative;
     }
     
     .sidebar .logo {
@@ -49,79 +55,66 @@
       font-weight: bold;
       margin-bottom: 30px;
       text-align: center;
+      color: var(--accent-color);
     }
     
-    .sidebar nav ul {
+    .menu-toggle {
+      cursor: pointer;
+      font-size: 24px;
+      color: var(--text-color);
+      display: none;
+    }
+    
+    nav ul {
       list-style: none;
     }
     
-    .sidebar nav ul li {
+    nav ul li {
       margin-bottom: 15px;
     }
     
-    .sidebar nav ul li a {
+    nav ul li a {
       display: block;
       text-decoration: none;
-      color: #fff;
+      color: var(--text-color);
       padding: 10px;
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: var(--card-bg);
       border-radius: 5px;
       transition: background-color 0.3s, color 0.3s;
     }
     
-    .sidebar nav ul li a:hover {
-      background-color: rgba(255, 255, 255, 0.3);
-      color: #000;
+    nav ul li a:hover {
+      background-color: var(--hover-bg);
+      color: var(--sidebar-bg);
     }
     
-    /* コンテンツ領域 */
     .content {
       flex: 1;
       padding: 40px;
-      background-color: rgba(0, 0, 0, 0.6);
+      background-color: var(--content-bg);
       backdrop-filter: blur(5px);
     }
     
-    /* コンテンツ内カード */
     .card {
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: var(--card-bg);
       padding: 30px;
       border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
       margin-bottom: 30px;
     }
     
-    .card h1 {
-      font-size: 36px;
-      margin-bottom: 20px;
-      color: #81d4fa;
-    }
-    
-    .card h2 {
-      font-size: 28px;
-      margin-bottom: 15px;
-      color: #81d4fa;
-    }
-    
-    .card h3 {
-      font-size: 22px;
-      margin-bottom: 10px;
-      color: #81d4fa;
-    }
-    
-    .card p {
-      margin-bottom: 20px;
-      font-size: 18px;
-    }
+    .card h1 { font-size: 36px; margin-bottom: 20px; color: var(--accent-color); }
+    .card h2 { font-size: 28px; margin-bottom: 15px; color: var(--accent-color); }
+    .card h3 { font-size: 22px; margin-bottom: 10px; color: var(--accent-color); }
+    .card p { margin-bottom: 20px; font-size: 18px; }
     
     .section-title {
       font-size: 24px;
       font-weight: bold;
       margin: 20px 0 10px;
-      color: #81d4fa;
+      color: var(--accent-color);
     }
     
-    /* iframe（動画やDiscordウィジェット）のスタイル */
     iframe {
       border: none;
       border-radius: 10px;
@@ -130,47 +123,54 @@
       margin: 15px 0;
     }
     
-    /* フッター */
     footer {
-      background-color: rgba(0, 0, 0, 0.8);
+      background-color: var(--sidebar-bg);
       text-align: center;
       padding: 15px;
-      color: #fff;
+      color: var(--text-color);
     }
     
     footer a {
-      color: #81d4fa;
+      color: var(--accent-color);
       text-decoration: none;
       padding: 5px 10px;
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: var(--card-bg);
       border-radius: 5px;
       transition: background-color 0.3s, color 0.3s;
     }
     
     footer a:hover {
-      background-color: rgba(255, 255, 255, 0.3);
-      color: #000;
+      background-color: var(--hover-bg);
+      color: var(--sidebar-bg);
     }
     
-    /* スマートフォンなど画面幅が狭い場合 */
     @media (max-width: 768px) {
-      .container {
-        flex-direction: column;
-      }
-      
+      .container { flex-direction: column; }
       .sidebar {
         width: 100%;
         flex-direction: row;
         align-items: center;
-        justify-content: space-around;
+        justify-content: space-between;
       }
-      
-      .sidebar .logo {
-        margin-bottom: 0;
+      .menu-toggle {
+        display: block;
       }
-      
-      .content {
-        padding: 20px;
+      .sidebar nav {
+        display: none;
+        width: 100%;
+      }
+      .sidebar nav.active {
+        display: block;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background: var(--sidebar-bg);
+        width: 100%;
+        padding: 10px 0;
+      }
+      .sidebar nav ul li {
+        margin: 10px 0;
+        text-align: center;
       }
     }
   </style>
@@ -180,7 +180,8 @@
     <!-- サイドバー -->
     <aside class="sidebar">
       <div class="logo">Freeze Axis</div>
-      <nav>
+      <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+      <nav id="mobile-nav">
         <ul>
           <li><a href="index.html">TOP</a></li>
           <li><a href="about3.html">思想・方針</a></li>
@@ -211,12 +212,19 @@
     </main>
   </div>
   
-  <!-- フッター -->
   <footer>
     <p>
       <a href="LICENSE.html" target="_blank">Freeze Axis 2025</a> | 
       <a href="https://discord.gg/XR444zcxZ6" target="_blank">Discord server</a>
     </p>
   </footer>
+  
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+    menuToggle.addEventListener('click', () => {
+      mobileNav.classList.toggle('active');
+    });
+  </script>
 </body>
 </html>
