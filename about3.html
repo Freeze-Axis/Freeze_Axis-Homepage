@@ -39,6 +39,7 @@
       min-height: 100vh;
       backdrop-filter: blur(2px);
     }
+    /* サイドバー */
     .sidebar {
       width: 250px;
       background: var(--sidebar-bg);
@@ -62,7 +63,11 @@
       color: var(--text-color);
       display: none;
     }
-    /* 固定メニュー部分は削除し、menu.htmlから読み込みます */
+    /* メニュー読み込み領域 */
+    nav#mobile-nav {
+      display: block;
+    }
+    /* コンテンツ */
     .content {
       flex: 1;
       padding: 40px;
@@ -94,6 +99,7 @@
     }
     .card p, .card li { font-size: 18px; margin-bottom: 20px; }
     .card ul { margin-left: 20px; margin-bottom: 20px; }
+    /* フッター */
     footer {
       background: var(--sidebar-bg);
       text-align: center;
@@ -112,6 +118,7 @@
       background: var(--hover-bg);
       color: var(--sidebar-bg);
     }
+    /* レスポンシブ */
     @media (max-width: 768px) {
       .container { flex-direction: column; }
       .sidebar {
@@ -140,14 +147,16 @@
 </head>
 <body>
   <div class="container">
+    <!-- サイドバー -->
     <aside class="sidebar">
       <div class="logo">Freeze Axis</div>
       <div class="menu-toggle" id="menu-toggle">&#9776;</div>
-      <!-- 外部ファイル menu.html を読み込む -->
+      <!-- メニュー読み込みエリア -->
       <nav id="mobile-nav">
         <div id="menu-placeholder"></div>
       </nav>
     </aside>
+    <!-- コンテンツ -->
     <main class="content">
       <div class="card">
         <h1>サイト利用規約</h1>
@@ -186,19 +195,22 @@
       </div>
     </main>
   </div>
+  
   <footer>
     <p>
       <a href="LICENSE.html" target="_blank">©Freeze Axis 2025</a> | 
       <a href="https://discord.gg/XR444zcxZ6" target="_blank">Discord server</a>
     </p>
   </footer>
+  
+  <!-- menu.html を読み込むスクリプト -->
   <script>
     fetch('menu.html')
       .then(response => response.text())
       .then(data => {
         document.getElementById('menu-placeholder').innerHTML = data;
       });
-      
+    
     const menuToggle = document.getElementById('menu-toggle');
     const mobileNav = document.getElementById('mobile-nav');
     menuToggle.addEventListener('click', () => {
