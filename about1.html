@@ -178,7 +178,7 @@
       <div class="menu-toggle" id="menu-toggle">&#9776;</div>
       <nav id="mobile-nav">
         <!-- nav.html の内容をここに読み込みます -->
-        <div id="nav-placeholder"></div>
+        <div id="menu-placeholder"></div>
       </nav>
     </aside>
     
@@ -210,10 +210,10 @@
   
   <script>
     // nav.html の内容を動的に読み込み
-    fetch('nav.html')
+    fetch('menu.html')
       .then(response => response.text())
       .then(data => {
-        document.getElementById('nav-placeholder').innerHTML = data;
+        document.getElementById('menu-placeholder').innerHTML = data;
       });
 
     // モバイルメニューの開閉処理
