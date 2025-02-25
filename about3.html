@@ -62,22 +62,7 @@
       color: var(--text-color);
       display: none;
     }
-    /* 以下、元のCSSはそのまま */
-    nav ul { list-style: none; }
-    nav ul li { margin-bottom: 15px; }
-    nav ul li a {
-      display: block;
-      text-decoration: none;
-      color: var(--text-color);
-      padding: 12px 15px;
-      background: var(--card-bg);
-      border-radius: 8px;
-      transition: background 0.3s, color 0.3s;
-    }
-    nav ul li a:hover {
-      background: var(--hover-bg);
-      color: var(--sidebar-bg);
-    }
+    /* ナビゲーションのスタイルは nav.html 側に記述 */
     .content {
       flex: 1;
       padding: 40px;
@@ -158,9 +143,8 @@
     <aside class="sidebar">
       <div class="logo">Freeze Axis</div>
       <div class="menu-toggle" id="menu-toggle">&#9776;</div>
-      <nav id="mobile-nav">
-        <div id="menu-placeholder"></div>
-      </nav>
+      <!-- 外部ファイルからナビゲーションを読み込む -->
+      <nav id="mobile-nav"></nav>
     </aside>
     <main class="content">
       <div class="card">
@@ -200,25 +184,27 @@
       </div>
     </main>
   </div>
+  
   <footer>
     <p>
       <a href="LICENSE.html" target="_blank">©Freeze Axis 2025</a> | 
       <a href="https://discord.gg/XR444zcxZ6" target="_blank">Discord server</a>
     </p>
   </footer>
+  
   <script>
-    // menu.html の内容を動的に読み込み
-    fetch('menu.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('menu-placeholder').innerHTML = data;
-      });
-
-    // モバイルメニューの開閉処理
+    document.addEventListener("DOMContentLoaded", function() {
+      fetch("nav.html")
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById("mobile-nav").innerHTML = data;
+        })
+        .catch(error => console.error("Navigationの読み込みに失敗しました:", error));
+    });
+    
     const menuToggle = document.getElementById('menu-toggle');
-    const mobileNav = document.getElementById('mobile-nav');
     menuToggle.addEventListener('click', () => {
-      mobileNav.classList.toggle('active');
+      document.getElementById("mobile-nav").classList.toggle('active');
     });
   </script>
 </body>
