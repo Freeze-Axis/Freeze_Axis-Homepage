@@ -176,12 +176,9 @@
     <aside class="sidebar">
       <div class="logo">Freeze Axis</div>
       <div class="menu-toggle" id="menu-toggle">&#9776;</div>
-      <nav id="mobile-nav">
-        <!-- nav.html の内容をここに読み込みます -->
-        <div id="menu-placeholder"></div>
-      </nav>
+      <!-- 外部ファイルから読み込むナビゲーション -->
+      <nav id="mobile-nav"></nav>
     </aside>
-    
     <!-- コンテンツ -->
     <main class="content">
       <div class="card">
@@ -208,19 +205,22 @@
     </p>
   </footer>
   
+  <!-- メニューの切り替え用スクリプト -->
   <script>
-    // nav.html の内容を動的に読み込み
-    fetch('menu.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('menu-placeholder').innerHTML = data;
-      });
+    // 外部ファイルからナビゲーションを読み込む
+    document.addEventListener("DOMContentLoaded", function() {
+      fetch("nav.html")
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById("mobile-nav").innerHTML = data;
+        })
+        .catch(error => console.error("Navigationの読み込みに失敗しました:", error));
+    });
 
-    // モバイルメニューの開閉処理
+    // モバイルメニューのトグル処理
     const menuToggle = document.getElementById('menu-toggle');
-    const mobileNav = document.getElementById('mobile-nav');
     menuToggle.addEventListener('click', () => {
-      mobileNav.classList.toggle('active');
+      document.getElementById("mobile-nav").classList.toggle('active');
     });
   </script>
 </body>
