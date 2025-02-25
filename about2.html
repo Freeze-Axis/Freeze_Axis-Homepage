@@ -55,14 +55,22 @@
       color: var(--accent-color);
       letter-spacing: 1px;
     }
-    .menu-toggle {
-      cursor: pointer;
-      font-size: 28px;
+    /* 以下、元のCSSはそのまま */
+    nav ul { list-style: none; }
+    nav ul li { margin-bottom: 15px; }
+    nav ul li a {
+      display: block;
+      text-decoration: none;
       color: var(--text-color);
-      display: none;
+      padding: 12px 15px;
+      background: var(--card-bg);
+      border-radius: 8px;
+      transition: background 0.3s, color 0.3s;
     }
-    nav { }
-    /* コンテンツ */
+    nav ul li a:hover {
+      background: var(--hover-bg);
+      color: var(--sidebar-bg);
+    }
     .content {
       flex: 1;
       padding: 40px;
@@ -81,10 +89,12 @@
     }
     .card:hover { transform: scale(1.02); }
     .card h1 { font-size: 36px; margin-bottom: 20px; color: var(--accent-color); }
+    .card p { font-size: 18px; margin-bottom: 20px; }
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
+      width: 100%;
       max-width: 1000px;
       margin: 0 auto;
     }
@@ -145,18 +155,6 @@
         justify-content: space-around;
       }
       .content { padding: 20px; }
-      .menu-toggle { display: block; }
-      .sidebar nav {
-        display: none;
-        width: 100%;
-        background: var(--sidebar-bg);
-        position: absolute;
-        top: 60px;
-        left: 0;
-        padding: 10px 0;
-      }
-      .sidebar nav.active { display: block; }
-      .sidebar nav ul li { margin: 10px 0; text-align: center; }
     }
   </style>
 </head>
@@ -200,11 +198,14 @@
     </p>
   </footer>
   <script>
+    // menu.html の内容を動的に読み込み
     fetch('menu.html')
       .then(response => response.text())
       .then(data => {
         document.getElementById('menu-placeholder').innerHTML = data;
       });
+
+    // モバイルメニューの開閉処理
     const menuToggle = document.getElementById('menu-toggle');
     const mobileNav = document.getElementById('mobile-nav');
     menuToggle.addEventListener('click', () => {
