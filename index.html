@@ -18,7 +18,7 @@
   <style>
     /* 共通カラー・サイズ設定 */
     :root {
-      --primary-color: #5a8fc0;           /* 氷を感じるブルー */
+      --primary-color: #5a8fc0;
       --sidebar-bg: rgba(0, 0, 0, 0.8);
       --content-bg: rgba(0, 0, 0, 0.6);
       --card-bg: rgba(255, 255, 255, 0.1);
@@ -27,7 +27,6 @@
       --link-color: #50fa7b;
       --text-color: #ffffff;
     }
-
     /* リセット・基本設定 */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -42,7 +41,6 @@
       min-height: 100vh;
       backdrop-filter: blur(2px);
     }
-
     /* サイドバー */
     .sidebar {
       width: 250px;
@@ -50,7 +48,7 @@
       padding: 20px;
       display: flex;
       flex-direction: column;
-      position: relative;
+      position: relative; /* ナビゲーションの絶対配置の基準 */
       box-shadow: 2px 0 8px rgba(0,0,0,0.5);
     }
     .logo {
@@ -83,7 +81,6 @@
       background: var(--hover-bg);
       color: var(--sidebar-bg);
     }
-
     /* コンテンツ領域 */
     .content {
       flex: 1;
@@ -154,7 +151,6 @@
       text-shadow: 0 0 8px var(--link-color);
     }
     .link-card p { font-size: 16px; }
-
     /* フッター */
     footer {
       background: var(--sidebar-bg);
@@ -174,7 +170,6 @@
       background: var(--hover-bg);
       color: var(--sidebar-bg);
     }
-
     /* レスポンシブ対応 */
     @media (max-width: 768px) {
       .container { flex-direction: column; }
@@ -183,6 +178,7 @@
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
+        position: relative;
       }
       .menu-toggle { display: block; }
       .sidebar nav {
@@ -193,6 +189,7 @@
         top: 60px;
         left: 0;
         padding: 10px 0;
+        z-index: 1000;
       }
       .sidebar nav.active { display: block; }
       .sidebar nav ul li {
@@ -207,7 +204,7 @@
     <aside class="sidebar">
       <div class="logo">Freeze Axis</div>
       <div class="menu-toggle" id="menu-toggle">&#9776;</div>
-      <!-- 外部ファイルからナビゲーションを読み込む -->
+      <!-- 外部ファイル(nav.html)からナビゲーションを読み込む -->
       <nav id="mobile-nav"></nav>
     </aside>
     <!-- コンテンツ領域 -->
@@ -259,7 +256,6 @@
   </footer>
   
   <script>
-    // 外部ファイル(nav.html)からナビゲーションを読み込む
     document.addEventListener("DOMContentLoaded", function() {
       fetch("nav.html")
         .then(response => response.text())
@@ -267,11 +263,11 @@
           document.getElementById("mobile-nav").innerHTML = data;
         })
         .catch(error => console.error("Navigationの読み込みに失敗しました:", error));
-    });
-    // メニュー切替
-    const menuToggle = document.getElementById('menu-toggle');
-    menuToggle.addEventListener('click', () => {
-      document.getElementById("mobile-nav").classList.toggle('active');
+      
+      const menuToggle = document.getElementById('menu-toggle');
+      menuToggle.addEventListener('click', () => {
+        document.getElementById("mobile-nav").classList.toggle('active');
+      });
     });
   </script>
 </body>
