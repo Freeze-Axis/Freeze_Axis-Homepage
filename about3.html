@@ -63,7 +63,7 @@
       color: var(--text-color);
       display: none;
     }
-    /* ここでは内部ナビゲーションは空にして外部読み込み */
+    /* 外部ナビゲーションは外部読み込み */
     nav ul { list-style: none; }
     nav ul li { margin-bottom: 15px; }
     nav ul li a {
@@ -133,6 +133,7 @@
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
+        position: relative;
       }
       .menu-toggle { display: block; }
       .sidebar nav {
@@ -143,6 +144,7 @@
         top: 60px;
         left: 0;
         padding: 10px 0;
+        z-index: 1000;
       }
       .sidebar nav.active { display: block; }
       .sidebar nav ul li {
@@ -209,7 +211,6 @@
   </footer>
   
   <script>
-    // 外部ファイル(nav.html)からナビゲーションを読み込む
     document.addEventListener("DOMContentLoaded", function() {
       fetch("nav.html")
         .then(response => response.text())
@@ -217,11 +218,11 @@
           document.getElementById("mobile-nav").innerHTML = data;
         })
         .catch(error => console.error("Navigationの読み込みに失敗しました:", error));
-    });
-    // メニュー切替
-    const menuToggle = document.getElementById('menu-toggle');
-    menuToggle.addEventListener('click', () => {
-      document.getElementById("mobile-nav").classList.toggle('active');
+      
+      const menuToggle = document.getElementById('menu-toggle');
+      menuToggle.addEventListener('click', () => {
+        document.getElementById("mobile-nav").classList.toggle('active');
+      });
     });
   </script>
 </body>
