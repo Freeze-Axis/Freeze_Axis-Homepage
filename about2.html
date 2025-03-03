@@ -176,6 +176,12 @@
       .sidebar nav.active { display: block; }
       .sidebar nav ul li { margin: 10px 0; text-align: center; }
     }
+    /* スマホ表示時にツール一覧を縦2列に表示 */
+    @media (max-width: 480px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
   </style>
 </head>
 <body>
