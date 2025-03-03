@@ -26,11 +26,7 @@
       --link-color: #50fa7b;
       --text-color: #fff;
     }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Roboto', sans-serif;
       background: linear-gradient(135deg, var(--primary-color), #4a7aa6);
@@ -66,12 +62,8 @@
       color: var(--text-color);
       display: none;
     }
-    nav ul {
-      list-style: none;
-    }
-    nav ul li {
-      margin-bottom: 15px;
-    }
+    nav ul { list-style: none; }
+    nav ul li { margin-bottom: 15px; }
     nav ul li a {
       display: block;
       text-decoration: none;
@@ -101,18 +93,9 @@
       border: 1px solid rgba(255,255,255,0.2);
       transition: transform 0.3s;
     }
-    .card:hover {
-      transform: scale(1.02);
-    }
-    .card h1 {
-      font-size: 36px;
-      margin-bottom: 20px;
-      color: var(--accent-color);
-    }
-    .card p {
-      font-size: 18px;
-      margin-bottom: 20px;
-    }
+    .card:hover { transform: scale(1.02); }
+    .card h1 { font-size: 36px; margin-bottom: 20px; color: var(--accent-color); }
+    .card p { font-size: 18px; margin-bottom: 20px; }
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -120,6 +103,12 @@
       width: 100%;
       max-width: 1000px;
       margin: 0 auto;
+    }
+    /* スマホなどの狭い画面では1カラム表示に調整 */
+    @media (max-width: 480px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
     }
     .tool-card {
       background: #1e1e1e;
@@ -135,15 +124,8 @@
       box-shadow: 0 6px 16px rgba(0,0,0,0.7);
       border-color: var(--link-color);
     }
-    .tool-card h2 {
-      font-size: 24px;
-      margin: 10px 0;
-      color: var(--accent-color);
-    }
-    .tool-card p {
-      font-size: 16px;
-      margin-bottom: 15px;
-    }
+    .tool-card h2 { font-size: 24px; margin: 10px 0; color: var(--accent-color); }
+    .tool-card p { font-size: 16px; margin-bottom: 15px; }
     .tool-card a {
       display: inline-block;
       text-decoration: none;
@@ -176,11 +158,8 @@
       background: var(--hover-bg);
       color: var(--sidebar-bg);
     }
-
     @media (max-width: 768px) {
-      .container {
-        flex-direction: column;
-      }
+      .container { flex-direction: column; }
       .sidebar {
         width: 100%;
         flex-direction: row;
@@ -188,12 +167,8 @@
         justify-content: space-around;
         position: relative;
       }
-      .content {
-        padding: 20px;
-      }
-      .menu-toggle {
-        display: block;
-      }
+      .content { padding: 20px; }
+      .menu-toggle { display: block; }
       .sidebar nav {
         display: none;
         width: 100%;
@@ -204,17 +179,8 @@
         padding: 10px 0;
         z-index: 1000;
       }
-      .sidebar nav.active {
-        display: block;
-      }
-      .sidebar nav ul li {
-        margin: 10px 0;
-        text-align: center;
-      }
-      /* ▼ 追加：768px以下ではツール一覧を2列表示に固定する ▼ */
-      .grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      .sidebar nav.active { display: block; }
+      .sidebar nav ul li { margin: 10px 0; text-align: center; }
     }
   </style>
 </head>
