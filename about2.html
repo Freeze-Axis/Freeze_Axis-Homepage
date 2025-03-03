@@ -2,8 +2,19 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Freeze Axis公式サイト</title>
+  <meta name="description" content="Freeze Axis">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#a9ceec">
+  <meta property="og:url" content="">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="ツール一覧/拡張機能">
+  <meta property="og:description" content="公式ホームページ">
+  <meta property="og:site_name" content="Freeze Axis">
+  <meta property="og:image" content="https://media.discordapp.net/attachments/1317818459425345586/1338027029341143080/GeWAKeKasAA-_6Y_-_.jpg">
+  <link rel="icon" type="image/png" href="https://media.discordapp.net/attachments/1317818459425345586/1338027029341143080/GeWAKeKasAA-_6Y_-_.jpg">
+  <!-- Google Fonts: Roboto -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary-color: #5a8fc0;
@@ -24,6 +35,7 @@
       font-family: 'Roboto', sans-serif;
       background: linear-gradient(135deg, var(--primary-color), #4a7aa6);
       color: var(--text-color);
+      line-height: 1.6;
       min-height: 100vh;
     }
     .container {
@@ -103,7 +115,7 @@
     }
     .grid {
       display: grid;
-      grid-template-columns: 1fr 1fr; /* PC向け(例) */
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
       width: 100%;
       max-width: 1000px;
@@ -112,14 +124,11 @@
     .tool-card {
       background: #1e1e1e;
       border-radius: 12px;
-      padding: 20px;
+      padding: 0;
       box-shadow: 0 4px 12px rgba(0,0,0,0.5);
       transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
       text-align: center;
       border: 2px solid transparent;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
     }
     .tool-card:hover {
       transform: translateY(-5px);
@@ -199,38 +208,12 @@
         display: block;
       }
       .sidebar nav ul li {
-        margin: 10px 0; 
+        margin: 10px 0;
         text-align: center;
       }
-      /* タブレット以下は2カラム */
+      /* ▼ 追加：768px以下ではツール一覧を2列表示に固定する ▼ */
       .grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    /* スマホ幅でカードをScrapboxのようなコンパクトサイズに */
-    @media (max-width: 480px) {
-      .grid {
-        /* カラム幅を小さめに固定して複数列を表示 */
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        gap: 8px;
-      }
-      .tool-card {
-        /* 必要なら幅を固定する(overflowが出る場合は注意) */
-        max-width: 150px; 
-        min-height: 160px;
-      }
-      .tool-card h2 {
-        font-size: 16px;
-        white-space: nowrap; /* 折り返したくないなら */
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-      .tool-card p {
-        font-size: 14px;
-      }
-      .tool-card a {
-        margin-top: auto;
+        grid-template-columns: repeat(2, 1fr);
       }
     }
   </style>
@@ -251,19 +234,18 @@
           <div class="tool-card">
             <h2>Web荒らしツール</h2>
             <p>高機能Webツール。</p>
-            <a href="#" target="_blank">アクセス</a>
+            <a href="https://freeze-axis.github.io/Freeze_Tool/" target="_blank">アクセス</a>
           </div>
           <div class="tool-card">
             <h2>DMグループ荒らしツール</h2>
             <p>グループ追加・作成。</p>
-            <a href="#" target="_blank">アクセス</a>
+            <a href="https://freeze-axis.github.io/add_group/" target="_blank">アクセス</a>
           </div>
           <div class="tool-card">
             <h2>通報ツール</h2>
             <p>複数tokenで連続通報</p>
-            <a href="#" target="_blank">アクセス</a>
+            <a href="https://freeze-axis.github.io/discord_report/" target="_blank">アクセス</a>
           </div>
-          <!-- 必要に応じてカードを増やす -->
         </div>
       </div>
     </main>
@@ -271,8 +253,8 @@
   
   <footer>
     <p>
-      <a href="#" target="_blank">©Freeze Axis 2025</a> | 
-      <a href="#" target="_blank">Discord server</a>
+      <a href="LICENSE.html" target="_blank">©Freeze Axis 2025</a> | 
+      <a href="https://discord.gg/XR444zcxZ6" target="_blank">Discord server</a>
     </p>
   </footer>
   
