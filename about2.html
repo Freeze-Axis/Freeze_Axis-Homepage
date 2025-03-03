@@ -6,15 +6,6 @@
   <meta name="description" content="Freeze Axis">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#a9ceec">
-  <meta property="og:url" content="">
-  <meta property="og:type" content="article">
-  <meta property="og:title" content="ツール一覧/拡張機能">
-  <meta property="og:description" content="公式ホームページ">
-  <meta property="og:site_name" content="Freeze Axis">
-  <meta property="og:image" content="https://media.discordapp.net/attachments/1317818459425345586/1338027029341143080/GeWAKeKasAA-_6Y_-_.jpg">
-  <link rel="icon" type="image/png" href="https://media.discordapp.net/attachments/1317818459425345586/1338027029341143080/GeWAKeKasAA-_6Y_-_.jpg">
-  <!-- Google Fonts: Roboto -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary-color: #5a8fc0;
@@ -26,7 +17,11 @@
       --link-color: #50fa7b;
       --text-color: #fff;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box;
+    }
     body {
       font-family: 'Roboto', sans-serif;
       background: linear-gradient(135deg, var(--primary-color), #4a7aa6);
@@ -62,8 +57,12 @@
       color: var(--text-color);
       display: none;
     }
-    nav ul { list-style: none; }
-    nav ul li { margin-bottom: 15px; }
+    nav ul {
+      list-style: none;
+    }
+    nav ul li {
+      margin-bottom: 15px;
+    }
     nav ul li a {
       display: block;
       text-decoration: none;
@@ -93,33 +92,59 @@
       border: 1px solid rgba(255,255,255,0.2);
       transition: transform 0.3s;
     }
-    .card:hover { transform: scale(1.02); }
-    .card h1 { font-size: 36px; margin-bottom: 20px; color: var(--accent-color); }
-    .card p { font-size: 18px; margin-bottom: 20px; }
+    .card:hover {
+      transform: scale(1.02);
+    }
+    .card h1 {
+      font-size: 36px; 
+      margin-bottom: 20px; 
+      color: var(--accent-color);
+    }
+    .card p {
+      font-size: 18px; 
+      margin-bottom: 20px;
+    }
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      /* ここではPC/タブレットなど大きめ画面用のデフォルトを1列にしておく例 */
+      grid-template-columns: 1fr;
       gap: 20px;
       width: 100%;
       max-width: 1000px;
       margin: 0 auto;
     }
+    /* カードをflex化してボタン位置を下にそろえやすくする */
     .tool-card {
       background: #1e1e1e;
       border-radius: 12px;
-      padding: 0;
+      padding: 20px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.5);
       transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
       text-align: center;
       border: 2px solid transparent;
+      /* flexレイアウトで上下に要素を振り分ける */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
     .tool-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 6px 16px rgba(0,0,0,0.7);
       border-color: var(--link-color);
     }
-    .tool-card h2 { font-size: 24px; margin: 10px 0; color: var(--accent-color); }
-    .tool-card p { font-size: 16px; margin-bottom: 15px; }
+    /* タイトルや説明文をまとめるためのラッパ */
+    .tool-info {
+      margin-bottom: 20px; /* ボタンとの間隔を空ける */
+    }
+    .tool-card h2 {
+      font-size: 24px; 
+      margin: 10px 0; 
+      color: var(--accent-color);
+    }
+    .tool-card p {
+      font-size: 16px; 
+      margin-bottom: 15px;
+    }
     .tool-card a {
       display: inline-block;
       text-decoration: none;
@@ -153,7 +178,9 @@
       color: var(--sidebar-bg);
     }
     @media (max-width: 768px) {
-      .container { flex-direction: column; }
+      .container {
+        flex-direction: column;
+      }
       .sidebar {
         width: 100%;
         flex-direction: row;
@@ -161,8 +188,12 @@
         justify-content: space-around;
         position: relative;
       }
-      .content { padding: 20px; }
-      .menu-toggle { display: block; }
+      .content {
+        padding: 20px;
+      }
+      .menu-toggle {
+        display: block;
+      }
       .sidebar nav {
         display: none;
         width: 100%;
@@ -173,13 +204,37 @@
         padding: 10px 0;
         z-index: 1000;
       }
-      .sidebar nav.active { display: block; }
-      .sidebar nav ul li { margin: 10px 0; text-align: center; }
+      .sidebar nav.active {
+        display: block;
+      }
+      .sidebar nav ul li {
+        margin: 10px 0; 
+        text-align: center;
+      }
     }
-    /* スマホ表示時にツール一覧を縦2列に表示 */
+    /* スマホ幅(例として480px以下)で2カラムに変更 */
     @media (max-width: 480px) {
       .grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 10px; /* カード同士が狭くなるのでgapを少し減らす */
+      }
+      .tool-card h2 {
+        /* 文字サイズを小さめにして改行を減らす */
+        font-size: 18px;
+        /* どうしても折り返したくない場合は以下のような設定も可
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        */
+      }
+      .tool-card p {
+        font-size: 14px;
+      }
+      /* ボタンが常に下に来るようにスペースを確保する場合
+         margin-top: auto; を指定してもOK
+      */
+      .tool-card a {
+        margin-top: auto;
       }
     }
   </style>
@@ -197,19 +252,28 @@
         <h1>ツールリンク</h1>
         <p>以下のツールからお選びください。</p>
         <div class="grid">
+          <!-- 1つめ -->
           <div class="tool-card">
-            <h2>Web荒らしツール</h2>
-            <p>高機能Webツール。</p>
+            <div class="tool-info">
+              <h2>Web荒らしツール</h2>
+              <p>高機能Webツール。</p>
+            </div>
             <a href="https://freeze-axis.github.io/Freeze_Tool/" target="_blank">アクセス</a>
           </div>
+          <!-- 2つめ -->
           <div class="tool-card">
-            <h2>DMグループ荒らしツール</h2>
-            <p>グループ追加・作成。</p>
+            <div class="tool-info">
+              <h2>DMグループ荒らしツール</h2>
+              <p>グループ追加・作成。</p>
+            </div>
             <a href="https://freeze-axis.github.io/add_group/" target="_blank">アクセス</a>
           </div>
+          <!-- 3つめ -->
           <div class="tool-card">
-            <h2>通報ツール</h2>
-            <p>複数tokenで連続通報</p>
+            <div class="tool-info">
+              <h2>通報ツール</h2>
+              <p>複数tokenで連続通報</p>
+            </div>
             <a href="https://freeze-axis.github.io/discord_report/" target="_blank">アクセス</a>
           </div>
         </div>
